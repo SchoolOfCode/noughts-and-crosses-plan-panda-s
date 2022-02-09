@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.parent {
+/* .parent {
   padding: 25px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -49,4 +49,20 @@
 }
 .div9 {
   grid-area: 3 / 3 / 4 / 4;
+} */
+
+.board {
+  text-align: center;
+  margin: auto;
+}
+
+.board-row {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  height: 120px;
+  width: 120px;
+  font-size: 50px;
 }
