@@ -1,10 +1,9 @@
 import React from "react";
 
-function Square({ move, value, onClick, count }) {
+function Square({ value, onClick }) {
   return (
     <div>
       <button className="btn" onClick={onClick}>
-        {/* {count % 2 === 0 ? "X" : "O"}  */}
         {value}
       </button>
     </div>
