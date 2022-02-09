@@ -11,7 +11,6 @@ function Board({ board, move }) {
     <div className="Board">
       <div className="parent">
         <div className="div1">
-          {" "}
           <Square />
         </div>
         <div className="div2"> 1</div>
