@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 //styling
 import "../App/App.css";
@@ -7,37 +8,46 @@ import "../App/App.css";
 import Square from "../Square";
 
 function Board({ board, move }) {
+  const [square, setSquare] = useState(Array(9).fill(null));
+  const [count, setCount] = useState(0);
+
+  function handleOnClick(i) {
+    const newCount = count + 1;
+    setCount(newCount);
+    if (newCount % 2 === 1) {
+      //const newSquare = Array(i).fill("X");
+      //console.log(newSquare);
+      setSquare([...square.slice(0, i), "X", ...square.slice(i + 1)]);
+      console.log(square);
+    } else {
+      //const newSquare = Array(i).fill("X");
+      setSquare([...square.slice(0, i), "O", ...square.slice(i + 1)]);
+      console.log(square);
+    }
+  }
+
+  function renderSquare(i) {
+    return (
+      <Square
+        value={square[i]}
+        onClick={() => handleOnClick(i)}
+        count={count}
+      />
+    );
+  }
+
   return (
     <div className="Board">
       <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+        {renderSquare(0)} {renderSquare(1)} {renderSquare(2)}
       </div>
       <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+        {renderSquare(3)} {renderSquare(4)} {renderSquare(5)}
       </div>
       <div className="board-row">
-        <Square />
-        <Square />
-        <Square />
+        {renderSquare(6)} {renderSquare(7)} {renderSquare(8)}
       </div>
-
-      {/* <div className="parent">
-        <div className="div1">
-          {" "} */}
-      {/* </div>
-        <div className="div2"> 1</div>
-        <div className="div3"> 2</div>
-        <div className="div4"> 3</div>
-        <div className="div5"> 4</div>
-        <div className="div6"> 5</div>
-        <div className="div7"> 6</div>
-        <div className="div8"> 7</div>
-        <div className="div9"> 8</div> */}
-      {/* </div> */}
+      <p>{count}</p>
     </div>
   );
 }
