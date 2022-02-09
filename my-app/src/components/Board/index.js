@@ -13,6 +13,11 @@ function Board({ board, move }) {
   const [count, setCount] = useState(0);
   const winner = CalcWinner(square);
 
+  function reset() {
+    setCount(0);
+    setSquare(Array(9).fill(null));
+  }
+
   function handleOnClick(i) {
     if (square[i] !== null) {
       return;
@@ -49,6 +54,7 @@ function Board({ board, move }) {
       </div>
       <p>Next player: {count % 2 === 1 ? "⭕" : "❌"}</p>
       <p>The winner: {winner === null && count === 9 ? "Draw" : winner}</p>
+      <button onClick={reset}>Reset Game</button>
     </div>
   );
 }
